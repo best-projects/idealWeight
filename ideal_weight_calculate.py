@@ -20,7 +20,7 @@ def bmi(weight, height):
     """
     try:
         type = ''
-        bmi = weight / (height * height)
+        bmi = weight / (height/100 * height/100)
         print(bmi)
         if bmi < 19:
             type = "کمبود وزن"
