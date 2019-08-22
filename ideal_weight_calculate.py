@@ -19,26 +19,25 @@ def bmi(weight, height):
         BMI => weight (kg) / height (m) * height (m)
     """
     try:
-        type = ''
-        bmi = weight / (height/100 * height/100)
-        print(bmi)
+        situation = ''
+        bmi = weight / (height * height)
         if bmi < 19:
-            type = "کمبود وزن"
+            situation = "Underweight. You need to add some weight!"
         elif bmi >= 19 and bmi < 25:
-            type = "مطلوب"
+            situation = "Injustice. Exellent keep it on."
         elif bmi >= 25 and bmi < 30:
-            type = "اضافه وزن"
+            situation = "Overweight. If you want to be healthy you need to lose weight!"
         elif bmi >= 30:
-            type = "چاق"
-        return type
+            situation = "Chubby!. Soon you will be die :)"
+        return situation
     except:
         print(traceback.format_exc())
         return []
 
 
 if __name__ == "__main__":
-    print(Fore.LIGHTGREEN_EX + "Welcome to ideal body calculator!" + "\n" + "Please answer these questions :")
-    gender = input("What is your gender ? ( Male(m) / Female(m) ) : ")
-    height = float(input("How much do you height ? (cm) :"))
-    weight = int(input("How much do you weight ? (Kg) :"))
-    bmi = print("شرایط بدنی : " + str(bmi(weight,( height / 100))))
+    print(Fore.LIGHTGREEN_EX + "Welcome to ideal body calculator! \n" + "Please answer these questions :")
+    gender = input("What is your gender ? ( Male(m) / Female(h) ) : ")
+    height = float(input("How much do you height ? (cm) : "))
+    weight = int(input("How much do you weight ? (Kg) : "))
+    print(Fore.LIGHTYELLOW_EX + "\nBody Mass Index : " + Style.BRIGHT + bmi(weight,( height / 100)))
