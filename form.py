@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
+from ideal_weight_calculate import bmi
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -25,10 +25,10 @@ class Ui_MainWindow(object):
         self.Weight.setGeometry(QtCore.QRect(90, 140, 101, 41))
         self.Weight.setObjectName("Weight")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 90, 67, 41))
+        self.label.setGeometry(QtCore.QRect(10, 90, 81, 41))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(10, 140, 67, 41))
+        self.label_2.setGeometry(QtCore.QRect(10, 140, 81, 41))
         self.label_2.setObjectName("label_2")
         self.Calculate = QtWidgets.QPushButton(self.centralwidget)
         self.Calculate.setGeometry(QtCore.QRect(100, 210, 81, 41))
@@ -38,9 +38,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
-        self.textBrowser = QtWidgets.QTextBrowser(self.tab)
-        self.textBrowser.setGeometry(QtCore.QRect(-10, 0, 271, 151))
-        self.textBrowser.setObjectName("textBrowser")
+        self.result = QtWidgets.QTextBrowser(self.tab)
+        self.result.setGeometry(QtCore.QRect(-10, 0, 271, 151))
+        self.result.setObjectName("result")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -58,17 +58,22 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(0)
         self.Calculate.clicked.connect(self.sayok)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-    def sayok(self):
-        print("okkkkkkkkkkkkkkkkk")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "height"))
-        self.label_2.setText(_translate("MainWindow", "weight"))
+        self.label.setText(_translate("MainWindow", "height(cm)"))
+        self.label_2.setText(_translate("MainWindow", "weight(kg)"))
         self.Calculate.setText(_translate("MainWindow", "Calculate"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Result"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "!!"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+
+    def sayok(self):
+        print("okkkkkkkkkkkkkkkkk")
+        weight_input = int(self.Weight.text())
+        height_input = int(self.Height.text())
+        cal_bmi = bmi(weight_input, height_input)
+        self.result.setText(cal_bmi)
 
 
 if __name__ == "__main__":

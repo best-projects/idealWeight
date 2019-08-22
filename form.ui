@@ -45,12 +45,12 @@
      <rect>
       <x>10</x>
       <y>90</y>
-      <width>67</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>height</string>
+     <string>height(cm)</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -58,12 +58,12 @@
      <rect>
       <x>10</x>
       <y>140</y>
-      <width>67</width>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>weight</string>
+     <string>weight(kg)</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Calculate">
@@ -95,7 +95,7 @@
      <attribute name="title">
       <string>Result</string>
      </attribute>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="result">
       <property name="geometry">
        <rect>
         <x>-10</x>
