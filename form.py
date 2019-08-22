@@ -62,8 +62,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "height(cm)"))
-        self.label_2.setText(_translate("MainWindow", "weight(kg)"))
+        self.label.setText(_translate("MainWindow", "height (cm)"))
+        self.label_2.setText(_translate("MainWindow", "weight (kg)"))
         self.Calculate.setText(_translate("MainWindow", "Calculate"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Result"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         print("okkkkkkkkkkkkkkkkk")
         weight_input = int(self.Weight.text())
         height_input = int(self.Height.text())
-        cal_bmi = bmi(weight_input, height_input)
+        cal_bmi = bmi(weight_input, height_input / 100)
         self.result.setText(cal_bmi)
 
 
