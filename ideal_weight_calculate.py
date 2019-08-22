@@ -3,6 +3,22 @@ import traceback
 init(autoreset=True)  # for reset the color in new element
 
 
+logo = """
+  _____    _            _ __    __     _       _     _   
+  \_   \__| | ___  __ _| / / /\ \ \___(_) __ _| |__ | |_ 
+   / /\/ _` |/ _ \/ _` | \ \/  \/ / _ \ |/ _` | '_ \| __|
+/\/ /_| (_| |  __/ (_| | |\  /\  /  __/ | (_| | | | | |_ 
+\____/ \__,_|\___|\__,_|_| \/  \/ \___|_|\__, |_| |_|\__|
+                                         |___/           
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Made By : mehran.safaripour@gmail.com                 +
++                                                       +
++ Welcome to ideal body calculator !                    +
++ Please answer these questions :                       +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"""
+
+
 def ibw():
     """
         calculate the ideal body weight base on this formola :
@@ -36,8 +52,10 @@ def bmi(weight, height):
 
 
 if __name__ == "__main__":
-    print(Fore.LIGHTGREEN_EX + "Welcome to ideal body calculator! \n" + "Please answer these questions :")
+    print(Fore.LIGHTGREEN_EX + logo)
+    # inputs
     gender = input("What is your gender ? ( Male(m) / Female(h) ) : ")
     height = float(input("How much do you height ? (cm) : "))
-    weight = int(input("How much do you weight ? (Kg) : "))
+    weight = float(input("How much do you weight ? (Kg) : "))
+    # Body Mass Index calculator
     print(Fore.LIGHTYELLOW_EX + "\nBody Mass Index : " + Style.BRIGHT + bmi(weight,( height / 100)))
