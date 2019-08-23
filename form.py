@@ -8,40 +8,43 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 from ideal_weight_calculate import *
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(484, 600)
+        MainWindow.resize(484, 350)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setDockOptions(QtWidgets.QMainWindow.AllowTabbedDocks|QtWidgets.QMainWindow.AnimatedDocks)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.Height = QtWidgets.QLineEdit(self.centralwidget)
-        self.Height.setGeometry(QtCore.QRect(90, 90, 101, 41))
+        self.Height.setGeometry(QtCore.QRect(90, 30, 101, 41))
         self.Height.setObjectName("Height")
         self.Weight = QtWidgets.QLineEdit(self.centralwidget)
-        self.Weight.setGeometry(QtCore.QRect(90, 140, 101, 41))
+        self.Weight.setGeometry(QtCore.QRect(90, 80, 101, 41))
         self.Weight.setObjectName("Weight")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(10, 90, 81, 41))
+        self.label.setGeometry(QtCore.QRect(10, 30, 81, 41))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(10, 140, 81, 41))
+        self.label_2.setGeometry(QtCore.QRect(10, 80, 81, 41))
         self.label_2.setObjectName("label_2")
         self.Calculate = QtWidgets.QPushButton(self.centralwidget)
-        self.Calculate.setGeometry(QtCore.QRect(100, 250, 81, 41))
+        self.Calculate.setGeometry(QtCore.QRect(100, 190, 81, 41))
         self.Calculate.setObjectName("Calculate")
         self.select = QtWidgets.QComboBox(self.centralwidget)
-        self.select.setGeometry(QtCore.QRect(90, 190, 101, 41))
+        self.select.setGeometry(QtCore.QRect(90, 130, 101, 41))
         self.select.setEditable(False)
         self.select.setObjectName("select")
         self.select.addItem("")
         self.select.addItem("")
         self.log = QtWidgets.QTextBrowser(self.centralwidget)
-        self.log.setGeometry(QtCore.QRect(195, 90, 271, 201))
+        self.log.setGeometry(QtCore.QRect(195, 30, 271, 201))
         self.log.setObjectName("log")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(10, 130, 61, 41))
+        self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 484, 22))
@@ -63,6 +66,7 @@ class Ui_MainWindow(object):
         self.Calculate.setText(_translate("MainWindow", "Calculate"))
         self.select.setItemText(0, _translate("MainWindow", "Female"))
         self.select.setItemText(1, _translate("MainWindow", "Male"))
+        self.label_3.setText(_translate("MainWindow", "gender"))
 
     def calculate_ideal_weight(self):
         self.log.clear()
@@ -74,6 +78,7 @@ class Ui_MainWindow(object):
         self.log.append(cal_bmi)
         self.log.append("\nIdeal_weight  : %s   "%str(cal_ibw))
         # self.result.setText(str(cal_bmi))
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
