@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
         height_input = int(self.Height.text())
         cal_bmi = bmi(weight_input, height_input / 100)
         gender = self.select.currentIndex()
-        cal_ibw = round(ibw(height_input, gender))
+        cal_ibw = ibw(height_input, gender)
         self.log.append(cal_bmi)
         self.log.append("\nIdeal weight : %s kg " % str(cal_ibw))
         # self.result.setText(str(cal_bmi))

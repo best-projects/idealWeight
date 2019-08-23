@@ -26,14 +26,17 @@ def ibw(height , gender):
         Male IBW => 50 kg + 2.3 kg * (height(inch) - 60)
         Female IBW => 45.5 kg + 2.3 kg * (height(inch) - 60)
     """
-    #1 cm ==> 0.3937007874 inch
-    index = 0.3937007874
-    if gender == 1:  # male
-        ideal_weight = 50 + (2.3*(height*index-60))
-    else:
-        ideal_weight = 45.5 + (2.3*(height*index-60))
-    return ideal_weight
-
+    try:
+        #1 cm ==> 0.3937007874 inch
+        index = 0.3937007874
+        if gender == 1:  # male
+            ideal_weight = 50 + (2.3*((height*index)-60))
+        else:
+            ideal_weight = 45.5 + (2.3*((height*index)-60))
+        return round(ideal_weight)
+    except:
+        print(traceback.format_exc)
+        return "Something Wrong!"
 
 
 
@@ -57,7 +60,7 @@ def bmi(weight, height):
         return situation
     except:
         print(traceback.format_exc())
-        return []
+        return "something Wrong!"
 
 
 if __name__ == "__main__":
@@ -68,3 +71,5 @@ if __name__ == "__main__":
     weight = float(input("How much do you weight ? (Kg) : "))
     # Body Mass Index calculator
     print(Fore.LIGHTYELLOW_EX + "\nBody Mass Index : " + Style.BRIGHT + bmi(weight,( height / 100)))
+    # ideal body weight calculator
+    print(Fore.LIGHTRED_EX + "Ideal Weight : " + Style.BRIGHT + str(ibw(height, gender)))
