@@ -59,15 +59,18 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def calculate_ideal_weight(self):
-        self.log.clear()
-        weight_input = int(self.Weight.text())
-        height_input = int(self.Height.text())
-        cal_bmi = bmi(weight_input, height_input / 100)
-        gender = self.select.currentIndex()
-        cal_ibw = ibw(height_input, gender)
-        self.log.append(cal_bmi)
-        self.log.append("\nIdeal weight : %s kg " % str(cal_ibw))
-        # self.result.setText(str(cal_bmi))
+        try:
+            self.log.clear()
+            weight_input = int(self.Weight.text())
+            height_input = int(self.Height.text())
+            cal_bmi = bmi(weight_input, height_input / 100)
+            gender = self.select.currentIndex()
+            cal_ibw = ibw(height_input, gender)
+            self.log.append(cal_bmi)
+            self.log.append("\nIdeal weight : %s kg " % str(cal_ibw))
+            # self.result.setText(str(cal_bmi))
+        except:
+            self.log.append("Something Wrong!")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
