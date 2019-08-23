@@ -9,5 +9,7 @@ Arezo Darvishi
 Mehran Safaripour
 
 # Screenshot :camera:
-![](img/CLI_version.png)
-![](img/GUI_Version.png)
+
+CLI version                | Graphical version
+:-------------------------:|:-------------------------:
+![](img/CLI_version.png)   | ![](img/GUI_Version.png)
