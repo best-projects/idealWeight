@@ -6,14 +6,14 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from ideal_weight_calculate import bmi
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
+from ideal_weight_calculate import *
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(484, 600)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setDockOptions(QtWidgets.QMainWindow.AllowTabbedDocks|QtWidgets.QMainWindow.AnimatedDocks)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -31,23 +31,20 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(10, 140, 81, 41))
         self.label_2.setObjectName("label_2")
         self.Calculate = QtWidgets.QPushButton(self.centralwidget)
-        self.Calculate.setGeometry(QtCore.QRect(100, 210, 81, 41))
+        self.Calculate.setGeometry(QtCore.QRect(100, 250, 81, 41))
         self.Calculate.setObjectName("Calculate")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(210, 70, 261, 181))
-        self.tabWidget.setObjectName("tabWidget")
-        self.tab = QtWidgets.QWidget()
-        self.tab.setObjectName("tab")
-        self.result = QtWidgets.QTextBrowser(self.tab)
-        self.result.setGeometry(QtCore.QRect(-10, 0, 271, 151))
-        self.result.setObjectName("result")
-        self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QtWidgets.QWidget()
-        self.tab_2.setObjectName("tab_2")
-        self.tabWidget.addTab(self.tab_2, "")
+        self.select = QtWidgets.QComboBox(self.centralwidget)
+        self.select.setGeometry(QtCore.QRect(90, 190, 101, 41))
+        self.select.setEditable(False)
+        self.select.setObjectName("select")
+        self.select.addItem("")
+        self.select.addItem("")
+        self.log = QtWidgets.QTextBrowser(self.centralwidget)
+        self.log.setGeometry(QtCore.QRect(195, 90, 271, 201))
+        self.log.setObjectName("log")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 484, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -55,27 +52,28 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        self.Calculate.clicked.connect(self.sayok)
+        self.Calculate.clicked.connect(self.calculate_ideal_weight)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "height (cm)"))
-        self.label_2.setText(_translate("MainWindow", "weight (kg)"))
+        self.label.setText(_translate("MainWindow", "height(cm)"))
+        self.label_2.setText(_translate("MainWindow", "weight(kg)"))
         self.Calculate.setText(_translate("MainWindow", "Calculate"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Result"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.select.setItemText(0, _translate("MainWindow", "Female"))
+        self.select.setItemText(1, _translate("MainWindow", "Male"))
 
-    def sayok(self):
-        print("okkkkkkkkkkkkkkkkk")
+    def calculate_ideal_weight(self):
+        self.log.clear()
         weight_input = int(self.Weight.text())
         height_input = int(self.Height.text())
         cal_bmi = bmi(weight_input, height_input / 100)
-        self.result.setText(cal_bmi)
-
-
+        gender = self.select.currentIndex()
+        cal_ibw = round(ibw(height_input, gender))
+        self.log.append(cal_bmi)
+        self.log.append("\nIdeal_weight  : %s   "%str(cal_ibw))
+        # self.result.setText(str(cal_bmi))
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
