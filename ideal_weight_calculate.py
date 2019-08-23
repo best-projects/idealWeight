@@ -20,13 +20,21 @@ logo = """
 """
 
 
-def ibw():
+def ibw(height , gender):
     """
         calculate the ideal body weight base on this formola :
         Male IBW => 50 kg + 2.3 kg * (height(inch) - 60)
         Female IBW => 45.5 kg + 2.3 kg * (height(inch) - 60)
     """
-    pass
+    #1 cm ==> 0.3937007874 inch
+    index = 0.3937007874
+    if gender == 1:  # male
+        ideal_weight = 50 + (2.3*(height*index-60))
+    else:
+        ideal_weight = 45.5 + (2.3*(height*index-60))
+    return ideal_weight
+
+
 
 
 def bmi(weight, height):
