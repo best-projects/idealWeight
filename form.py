@@ -66,11 +66,12 @@ class Ui_MainWindow(object):
         gender = self.select.currentIndex()
         cal_ibw = round(ibw(height_input, gender))
         self.log.append(cal_bmi)
-        self.log.append("\nIdeal_weight  : %s   " % str(cal_ibw))
+        self.log.append("\nIdeal weight : %s kg " % str(cal_ibw))
         # self.result.setText(str(cal_bmi))
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Ideal weight calculator"))
         self.label.setText(_translate("MainWindow", "height(cm)"))
         self.label_2.setText(_translate("MainWindow", "weight(kg)"))
         self.Calculate.setText(_translate("MainWindow", "Calculate"))

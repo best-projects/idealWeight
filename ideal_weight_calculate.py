@@ -63,7 +63,7 @@ def bmi(weight, height):
 if __name__ == "__main__":
     print(Fore.LIGHTGREEN_EX + logo)
     # inputs
-    gender = input("What is your gender ? ( Male(m) / Female(h) ) : ")
+    gender = int(input("What is your gender ? ( Male(1) / Female(2) ) : "))
     height = float(input("How much do you height ? (cm) : "))
     weight = float(input("How much do you weight ? (Kg) : "))
     # Body Mass Index calculator
