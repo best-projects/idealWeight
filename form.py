@@ -13,7 +13,7 @@ from ideal_weight_calculate import *
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(484, 350)
+        MainWindow.resize(489, 278)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setDockOptions(QtWidgets.QMainWindow.AllowTabbedDocks|QtWidgets.QMainWindow.AnimatedDocks)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 484, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 489, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -58,6 +58,16 @@ class Ui_MainWindow(object):
         self.Calculate.clicked.connect(self.calculate_ideal_weight)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def calculate_ideal_weight(self):
+        self.log.clear()
+        weight_input = int(self.Weight.text())
+        height_input = int(self.Height.text())
+        cal_bmi = bmi(weight_input, height_input / 100)
+        gender = self.select.currentIndex()
+        cal_ibw = round(ibw(height_input, gender))
+        self.log.append(cal_bmi)
+        self.log.append("\nIdeal_weight  : %s   " % str(cal_ibw))
+        # self.result.setText(str(cal_bmi))
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -68,16 +78,6 @@ class Ui_MainWindow(object):
         self.select.setItemText(1, _translate("MainWindow", "Male"))
         self.label_3.setText(_translate("MainWindow", "gender"))
 
-    def calculate_ideal_weight(self):
-        self.log.clear()
-        weight_input = int(self.Weight.text())
-        height_input = int(self.Height.text())
-        cal_bmi = bmi(weight_input, height_input / 100)
-        gender = self.select.currentIndex()
-        cal_ibw = round(ibw(height_input, gender))
-        self.log.append(cal_bmi)
-        self.log.append("\nIdeal_weight  : %s   "%str(cal_ibw))
-        # self.result.setText(str(cal_bmi))
 
 if __name__ == "__main__":
     import sys
