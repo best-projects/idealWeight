@@ -5,8 +5,8 @@ An app to calculate ideal weight that keep you healthy :)
 both in command line version and graphical version !
 
 Created by :  
-Arezo Darvishi  
-Mehran Safaripour
+[Arezo Darvishi](https://github.com/arezoo69devop)  
+[Mehran Safaripour](https://github.com/Mehran-SP)  
 
 # Screenshot :camera:
 
