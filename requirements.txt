@@ -1,6 +1,6 @@
 altgraph==0.16.1
 colorama==0.4.1
 pkg-resources==0.0.0
-PyInstaller==3.5
+PyInstaller==3.6
 PyQt5==5.13.0
 PyQt5-sip==4.19.18
